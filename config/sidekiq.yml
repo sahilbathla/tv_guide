@@ -1,0 +1,4 @@
+:schedule:
+  tv_show_reminder:
+    cron: '0 0 * * * *'
+    class: FavoriteTvShowReminderEmailWorker

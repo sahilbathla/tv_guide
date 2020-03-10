@@ -1,0 +1,20 @@
+<%= form_tag('/search', method: 'get') do %>
+    <%= label_tag(:q, 'Search for:') %>
+    <%= text_field_tag(:q) %>
+    <%= submit_tag('Search') %>
+<% end %>
+<% @tv_shows.each do |tv_show| %>
+    <div class="container">
+        <div> Show Name - <%= tv_show.name %> </div>
+        <div> Show Timings - <%= "#{tv_show.start_at} - #{tv_show.end_at}" %>UTC </div>
+        <div> Channel - <%= tv_show.channel.name %> </div>
+        <div> Telecasts on - <%= repeating_days(tv_show) %> </div>
+        <% if tv_show.id.in?(@favorite_tv_shows_ids) %>
+            <div><strong>Marked as Favorite</strong></div>
+        <% else %>
+            <%= form_tag(favorite_tv_show_url(tv_show), method: :put) do %>
+                <%= button_tag 'Mark as Favorite' %>
+            <% end %>
+        <% end %>
+    </div>
+<% end %>
