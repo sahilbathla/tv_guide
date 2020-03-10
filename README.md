@@ -39,4 +39,8 @@ Please copy the settings to other environment files to reuse the code in other e
 # Test
 
 1. Basic validation tests added for tv shows.
-1. <Rest are pending>
+1. Rest are pending
+
+# Linting
+
+Pending
