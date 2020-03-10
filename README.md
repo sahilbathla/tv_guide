@@ -25,7 +25,18 @@ This is a tv guide setup application where you can search and mark tv show as fa
 1. When the reminder executes it checks weather it is still marked as favorite by user else exits.
 1. If all is good email is sent.
 
+# Directory Structure
+
+1. Home Controller is used for listing andd searching
+1. `app/workers` contains the worker for reminders and individual email worker
+1. `config/credentials` -> Credentials for gmail for email.
+1. `config/sidekiq.yml` -> For scheduling main worker that finds out all reminders to be sent that day.
+1. `config/development.rb` -> Contains all information of SMTP settings for email.
+1. mailers, helpers and models you can find in default directories.
+
+Please copy the settings to other environment files to reuse the code in other environments.
+
 # Test
 
 1. Basic validation tests added for tv shows.
-1. Rest are pending
+1. <Rest are pending>

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Channel < ApplicationRecord
   # Associations
   has_many :tv_shows

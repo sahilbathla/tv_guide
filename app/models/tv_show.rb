@@ -16,7 +16,7 @@ class TvShow < ApplicationRecord
 
   scope :favorite, -> (user) { joins(:favorite_tv_shows).where('favorite_tv_shows.user_id = ?', user.id) }
 
-  def self.searchable(query)
+  scope :searchable, -> (query) do
     includes(:channel).joins(:channel).where('channels.name LIKE :query OR tv_shows.name LIKE :query', query: "%#{query}%")
   end
   
