@@ -1,24 +1,31 @@
-# README
+# Description
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a tv guide setup application where you can search and mark tv show as favorite. Reminders will be sent for favorite users.
 
-Things you may want to cover:
+# Pre-requisites
 
-* Ruby version
+1. Ruby 2.5.1
+1. Rails 5+
+1. Redis installed on your system for Sidekiq
 
-* System dependencies
+# Setup
 
-* Configuration
+1. Clone this repository
+2. `bundle install`
+3. `bundle exec rake db:migrate`
+4. `bundle exec rake db:seed`
+5. Make sure redis is running for sidekiq jobs i.e `redis-cli`
+6. Edit credentials `EDITOR=vi bin/rails credentials:edit` and add gmail credentials as per example file `config/credentials.example.yml` or change SMTP for email in `development.rb`
+7. `bundle exec rails s`
+8. Open localhost:3000 and proceed with the setup
 
-* Database creation
+# Approach
 
-* Database initialization
+1. For reminders I have used sidekiq scheduler which runs every midnight and schedules reminders for the day by finding all tv shows marked as favorite for the day.
+1. When the reminder executes it checks weather it is still marked as favorite by user else exits.
+1. If all is good email is sent.
 
-* How to run the test suite
+# Test
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. Basic validation tests added for tv shows.
+1. Rest are pending
